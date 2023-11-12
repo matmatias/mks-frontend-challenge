@@ -10,5 +10,8 @@ interface Props {
   removeProductFromChart: (product: Product) => void;
 }
 
-export const ChartContext = createContext<Props | null>(null);
-
+export const ChartContext = createContext<Props>({
+  chartData: [],
+  addProductToChart: (_: Product) => {},
+  removeProductFromChart: (_: Product) => {},
+});

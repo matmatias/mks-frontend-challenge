@@ -8,6 +8,8 @@ interface Props {
   children: ReactNode;
 }
 
+const NOT_FOUND = -1;
+
 export function ChartProvider({ children }: Props) {
   const [chartData, setChartData] = useState<ChartData[]>([]);
 
@@ -20,7 +22,7 @@ export function ChartProvider({ children }: Props) {
       },
     );
 
-    if (targetProductIndex) {
+    if (targetProductIndex !== NOT_FOUND) {
       const targetProduct: ChartData = chartData[targetProductIndex];
       setChartData((prev) => {
         prev[targetProductIndex] = {
@@ -28,7 +30,7 @@ export function ChartProvider({ children }: Props) {
           quantity: targetProduct.quantity + 1,
         };
 
-        return prev;
+        return [...prev];
       });
     } else {
       setChartData((prev) => [...prev, { product: product, quantity: 1 }]);
@@ -44,7 +46,7 @@ export function ChartProvider({ children }: Props) {
       },
     );
 
-    if (!targetProductIndex) {
+    if (targetProductIndex === NOT_FOUND) {
       throw Error(
         `Cannot remove product of id ${product.id} because it does not exist in the chart`,
       );
@@ -64,7 +66,7 @@ export function ChartProvider({ children }: Props) {
         quantity: targetProduct.quantity - 1,
       };
 
-      return prev;
+      return [...prev];
     });
   }
 

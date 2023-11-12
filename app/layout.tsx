@@ -10,7 +10,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "3rem",
+      }}>
         <Providers>
           <Header />
           {children}
