@@ -10,5 +10,5 @@ export interface Product {
 
 export interface ChartData {
   product: Product;
-  quantity: number
-};
+  quantity: number;
+}

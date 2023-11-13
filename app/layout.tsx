@@ -6,12 +6,6 @@ import { Providers } from "@/providers";
 import { Header } from "./_components";
 import { StyledComponentsRegistry } from "@/lib";
 
-const Root = styled.body`
-  display: "flex";
-  flex-direction: "column";
-  gap: "3rem";
-`;
-
 const Footer = styled.footer`
   width: 100%;
   display: flex;
@@ -35,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ display: "flex", flexDirection: "column", gap: "3rem"}}>
+      <body style={{ display: "flex", flexDirection: "column", gap: "3rem" }}>
         <Providers>
           <Header />
           <StyledComponentsRegistry>{children}</StyledComponentsRegistry>

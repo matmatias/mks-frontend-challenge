@@ -9,6 +9,7 @@ import { useQuery } from "react-query";
 
 import { FetchProductsService } from "@/services";
 import { ChartContext } from "@/contexts";
+import { getFormattedCurrency } from "@/utils";
 
 const GridContainer = styled.section`
   display: flex;
@@ -117,11 +118,6 @@ export default function Home() {
   );
 
   const { _, addProductToChart } = useContext(ChartContext);
-  const currencyFormatter = new Intl.NumberFormat(undefined, {
-    style: "currency",
-    currency: "BRL",
-    maximumFractionDigits: 0,
-  });
 
   return (
     <main>
@@ -141,16 +137,16 @@ export default function Home() {
                   />
                   <CardInfoContainer>
                     <CardHeader>
-                      <Name>{prod.name}</Name>
+                      <Name className="hide-scrollbar">{prod.name}</Name>
                       <PriceBox>
                         <Price>
-                          {currencyFormatter
-                            .format(parseInt(prod.price))
-                            .replace(",", ".")}
+                          {getFormattedCurrency(parseInt(prod.price))}
                         </Price>
                       </PriceBox>
                     </CardHeader>
-                    <Description>{prod.description}</Description>
+                    <Description className="hide-scrollbar">
+                      {prod.description}
+                    </Description>
                   </CardInfoContainer>
                   <Button onClick={() => addProductToChart(prod)}>
                     <Image
