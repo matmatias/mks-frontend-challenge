@@ -70,12 +70,34 @@ export function ChartProvider({ children }: Props) {
     });
   }
 
+  function purgeProductFromChart(product: Product): void {
+    const targetProductIndex: number = chartData.findIndex(
+      (elem: ChartData) => {
+        if (elem.product.id === product.id) {
+          return true;
+        }
+      },
+    );
+
+    if (targetProductIndex === NOT_FOUND) {
+      throw Error(
+        `Cannot purge product of id ${product.id} because it does not exist in the chart`,
+      );
+    }
+
+    const targetProduct: ChartData = chartData[targetProductIndex];
+    setChartData((prev) =>
+      prev.filter((elem) => elem.product.id !== targetProduct.product.id),
+    );
+  }
+
   return (
     <ChartContext.Provider
       value={{
         chartData: chartData,
         addProductToChart: addProductToChart,
         removeProductFromChart: removeProductFromChart,
+        purgeProductFromChart: purgeProductFromChart
       }}
     >
       {children}

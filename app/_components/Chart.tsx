@@ -161,8 +161,12 @@ const BuyButton = styled.button`
 `;
 
 export function Chart() {
-  const { chartData, addProductToChart, removeProductFromChart } =
-    useContext(ChartContext);
+  const {
+    chartData,
+    addProductToChart,
+    removeProductFromChart,
+    purgeProductFromChart,
+  } = useContext(ChartContext);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -194,7 +198,11 @@ export function Chart() {
                 {chartData.map((chartProduct: ChartData) => {
                   return (
                     <ProductItem key={chartProduct.product.id}>
-                      <button>
+                      <button
+                        onClick={() =>
+                          purgeProductFromChart(chartProduct.product)
+                        }
+                      >
                         <Image
                           style={{ position: "absolute", top: -10, right: -10 }}
                           src="/close_chart.svg"
