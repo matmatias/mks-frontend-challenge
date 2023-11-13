@@ -2,6 +2,7 @@
 
 import type { Product } from "@/interfaces";
 
+import Image from "next/image";
 import { useContext } from "react";
 import { useQuery } from "react-query";
 
@@ -24,8 +25,7 @@ export default function Home() {
     fetchProductsService.fetchProducts(queryParams),
   );
 
-  const { _, addProductToChart } =
-    useContext(ChartContext);
+  const { _, addProductToChart } = useContext(ChartContext);
 
   return (
     <main>
@@ -43,6 +43,12 @@ export default function Home() {
             >
               {data!.products.map((prod: Product) => (
                 <li key={prod.id}>
+                  <Image
+                    src={prod.photo}
+                    width={150}
+                    height={150}
+                    alt={`Picture of ${prod.name}`}
+                  />
                   <div>{prod.id}</div>
                   <div>{prod.name}</div>
                   <div>{prod.photo}</div>

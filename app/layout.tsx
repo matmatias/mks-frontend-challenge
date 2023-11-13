@@ -2,6 +2,8 @@
 
 import { Providers } from "@/providers";
 import { Header } from "./_components";
+import { StyledComponentsRegistry } from "@/lib";
+import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -10,14 +12,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "3rem",
-      }}>
+      <body
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "3rem",
+        }}
+      >
         <Providers>
           <Header />
-          {children}
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
         </Providers>
       </body>
     </html>

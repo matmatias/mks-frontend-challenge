@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-weight: 600;
+  size: 40px;
+  line-height: 19px;
+  color: white;
+}
