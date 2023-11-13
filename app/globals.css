@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #F9F9F9;
 }
 
 h1 {
@@ -8,4 +9,17 @@ h1 {
   size: 40px;
   line-height: 19px;
   color: white;
+}
+
+ol {
+  all: unset;
+}
+
+li {
+  all: unset;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
 }

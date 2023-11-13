@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { ChartContext } from "@/contexts";
 
 const Button = styled.button`
-  all: unset;
   width: 90px;
   height: 45px;
   background-color: white;
