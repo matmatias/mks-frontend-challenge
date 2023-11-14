@@ -117,12 +117,14 @@ export default function Home() {
     fetchProductsService.fetchProducts(queryParams),
   );
 
-  const { _, addProductToChart } = useContext(ChartContext);
+  const { addProductToChart } = useContext(ChartContext);
 
   return (
     <main>
       {isLoading ? (
-        <h1>Loading...</h1>
+        <GridContainer>
+          <div className="loader"></div>
+        </GridContainer>
       ) : (
         <GridContainer>
           {!isError && (
