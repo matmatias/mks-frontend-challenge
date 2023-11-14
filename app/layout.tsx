@@ -1,5 +1,6 @@
 "use client";
 
+import "@fontsource/montserrat"
 import "./globals.css";
 import styled from "styled-components";
 import { Providers } from "@/providers";
@@ -29,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ display: "flex", flexDirection: "column", gap: "3rem" }}>
+      <body style={{ display: "flex", flexDirection: "column", gap: "3rem", fontFamily: "Montserrat" }}>
         <Providers>
           <Header />
           <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
